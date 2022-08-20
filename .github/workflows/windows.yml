@@ -136,30 +136,16 @@ jobs:
         dir *.exe
       shell: cmd
 
-    - name: 7zip CPU
-      run: |
-        cd ${{ github.workspace }}/build/
-        7z a -t7z -m0=lzma2 -mx=9 -mfb=64 -md=64m -ms=on MarianNMT.CPU.7z *.exe
-      shell: bash
-      if: matrix.gpu == false
-
-    - name: 7zip GPU
-      run: |
-        cd ${{ github.workspace }}/build/
-        7z a -t7z -m0=lzma2 -mx=9 -mfb=64 -md=64m -ms=on MarianNMT.GPU.7z *.exe
-      shell: bash
-      if: matrix.gpu == true
-
     - name: Upload CPU artifact
       uses: actions/upload-artifact@v3
       with:
         name: Marian CPU
-        path: ${{ github.workspace }}/build/MarianNMT.CPU.7z
+        path: ${{ github.workspace }}/build/*.exe
       if: matrix.gpu == false
 
     - name: Upload GPU artifact
       uses: actions/upload-artifact@v3
       with:
         name: Marian GPU
-        path: ${{ github.workspace }}/build/MarianNMT.GPU.7z
+        path: ${{ github.workspace }}/build/*.exe
       if: matrix.gpu == true
