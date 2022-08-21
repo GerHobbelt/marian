@@ -22,7 +22,7 @@ jobs:
             gpu: false
           # Windows CPU+GPU build
           - name: "Windows CPU+CUDA"
-            cuda: "10.2"
+            cuda: "11.1"
             gpu: true
 
     runs-on: windows-2019
@@ -45,7 +45,7 @@ jobs:
 
     - name: Install CUDA
       run: |
-        .\scripts\ci\install_cuda_windows.ps1 "10.2"
+        .\scripts\ci\install_cuda_windows.ps1 "11.1"
         # Set CUDA_PATH environment variable so that CMake can find CUDA
         echo "CUDA_PATH=$env:CUDA_PATH" | Out-File -FilePath $env:GITHUB_ENV  -Encoding utf8 -Append
         echo "$env:CUDA_PATH/bin"       | Out-File -FilePath $env:GITHUB_PATH -Encoding utf8 -Append
