@@ -41,7 +41,7 @@ InputFileStream::InputFileStream(const std::string &file)
   streamBuf1_.reset(new std::filebuf());
   auto ret = static_cast<std::filebuf*>(streamBuf1_.get())->open(file_.string().c_str(), std::ios::in | std::ios::binary);
   ABORT_IF(!ret, "Error opening file ({}): {}", errno, file_.string());
-  //ABORT_IF(ret != streamBuf1_.get(), "Return value is not equal to streambuf pointer, that is weird");
+  ABORT_IF(ret != streamBuf1_.get(), "Return value is not equal to streambuf pointer, that is weird");
 
   // insert .gz decompression
   if(marian::utils::endsWith(file, ".gz")) {
@@ -91,7 +91,7 @@ OutputFileStream::OutputFileStream(const std::string &file)
   streamBuf1_.reset(new std::filebuf());
   auto ret = static_cast<std::filebuf*>(streamBuf1_.get())->open(file.c_str(), std::ios::out | std::ios_base::binary);
   ABORT_IF(!ret, "File cannot be opened", file);
-  //ABORT_IF(ret != streamBuf1_.get(), "Return value is not equal to streambuf pointer, that is weird");
+  ABORT_IF(ret != streamBuf1_.get(), "Return value is not equal to streambuf pointer, that is weird");
 
   if(file_.extension() == marian::filesystem::Path(".gz")) {
     streamBuf2_.reset(new zstr::ostreambuf(streamBuf1_.get()));
@@ -177,7 +177,7 @@ void TemporaryFile::MakeTemp(const std::string &base) {
   streamBuf1_.reset(new std::filebuf());
   auto ret = static_cast<std::filebuf*>(streamBuf1_.get())->open(name, std::ios::out | std::ios_base::binary);
   ABORT_IF(!streamBuf1_, "File {} cannot be temp opened", name);
-  //ABORT_IF(ret != streamBuf1_.get(), "Return value ({}) is not equal to streambuf pointer ({}), that is weird.", (size_t)ret, (size_t)streamBuf1_.get());
+  ABORT_IF(ret != streamBuf1_.get(), "Return value ({}) is not equal to streambuf pointer ({}), that is weird.", (size_t)ret, (size_t)streamBuf1_.get());
 
   this->init(streamBuf1_.get());
 
