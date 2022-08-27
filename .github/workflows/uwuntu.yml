@@ -121,17 +121,18 @@ jobs:
         ./marian-scorer --version
         ./marian-server --version
         ./spm_encode --version
+        ls
 
     - name: Upload CPU artifact
       uses: actions/upload-artifact@v3
       with:
         name: Marian Ubuntu CPU
-        path: ${{ github.workspace }}/build/*.exe
+        path: ${{ github.workspace }}/build/*.app
       if: matrix.gpu == false
 
     - name: Upload GPU artifact
       uses: actions/upload-artifact@v3
       with:
         name: Marian Ubuntu GPU
-        path: ${{ github.workspace }}/build/*.exe
+        path: ${{ github.workspace }}/build/*.app
       if: matrix.gpu == true
