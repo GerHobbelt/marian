@@ -293,7 +293,7 @@ bool convertModel(std::string inputFile, std::string outputFile, int32_t targetP
   graph->forward();  // run the initializers
 
   if(addLsh) {
-    // After initialization, hijack the paramters for the LSH and force-overwrite with correct values.
+    // After initialization, hijack the parameters for the LSH and force-overwrite with correct values.
     // Once this is done we can just pack and save as normal.
     lsh::overwriteDummyParameters(graph, /*paramInfo=*/{lshOutputWeights, "lsh_output_codes", "lsh_output_rotation", lshNBits});
   }

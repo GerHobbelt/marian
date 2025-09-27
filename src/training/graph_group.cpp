@@ -418,7 +418,7 @@ bool GraphGroup::restoreFromCheckpoint(const std::string& modelFileName,
   auto& masterParameters = *found;
   for(auto graph : graphs_) {
     graph->forward(); // allocate graph parameter memory and initialize parameters from inference model. This needs to
-    // run a full forward pass over the paramters to allocate the parameters values in order (by parameter name).
+    // run a full forward pass over the parameters to allocate the parameters values in order (by parameter name).
     // Just doing graph->params()->allocateForward() is not sufficient.
     ABORT_IF(graph->params()->vals()->shape() != masterParameters.shape,
              "Graph parameter sizes and master copy parameter sizes in checkpoint do not match ({} != {})",

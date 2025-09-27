@@ -92,7 +92,7 @@ float OptimizerBase::update(Tensor params, Tensor grads, size_t mbSize, float co
   if(mvAvg_)
     updateAvgParams(avg_, pm_, batchesSeen_, mbSize);
 
-  // undo paramter type cast if required
+  // undo parameter type cast if required
   if(castOptimizerType_)
     CopyCast(params, pm_);
 

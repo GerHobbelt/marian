@@ -226,7 +226,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
   due to thread-non-safty of reference counting.
 - Make sure that items are 256-byte aligned during saving
 - Make explicit matmul functions respect setting of cublasMathMode
-- Fix memory mapping for mixed paramter models
+- Fix memory mapping for mixed parameter models
 - Removed naked pointer and potential memory-leak from file_stream.{cpp,h}
 - Compilation for GCC >= 7 due to exception thrown in destructor
 - Sort parameters by lexicographical order during allocation to ensure consistent

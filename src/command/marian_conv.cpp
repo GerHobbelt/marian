@@ -103,7 +103,7 @@ int main(int argc, char** argv) {
     graph->forward();  // run the initializers
 
     if(addLsh) {
-      // After initialization, hijack the paramters for the LSH and force-overwrite with correct values.
+      // After initialization, hijack the parameters for the LSH and force-overwrite with correct values.
       // Once this is done we can just pack and save as normal.
       for(auto p : toBeLSHed)
         lsh::overwriteDummyParameters(graph, /*paramInfo=*/p);

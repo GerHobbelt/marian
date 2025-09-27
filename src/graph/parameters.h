@@ -18,7 +18,7 @@ namespace marian {
 // sets of one type.
 class Parameters {
 protected:
-  Type acceptedElementType_; // this parameter object only takes paramters of this type
+  Type acceptedElementType_; // this parameter object only takes parameters of this type
 
   /** @brief List of all parameter nodes of this expression graph. */
   std::vector<Expr> params_;
